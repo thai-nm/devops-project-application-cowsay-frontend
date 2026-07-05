@@ -1,9 +1,5 @@
 def executeSSHCommand(sshKey, sshUser, serverHost, command) {
     sh """
-        echo ${sshKey}
-        echo ${sshUser}
-        ls -la ${sshKey}
-        cat ${sshKey}
         ssh -i ${sshKey} -o StrictHostKeyChecking=no -o ConnectTimeout=10 ${sshUser}@${serverHost} '${command}'
     """
 }
@@ -50,11 +46,7 @@ def executeRemoteDeployment(imageName, serverHost, appPort, containerName) {
         
         # Run new container
         echo "Starting new container..."
-        docker run -d \\\\
-            --name ${containerName} \\\\
-            -p ${appPort}:${appPort} \\\\
-            --restart unless-stopped \\\\
-            ${imageName}
+        docker run -d --name ${containerName} -p ${appPort}:${appPort} --restart unless-stopped ${imageName}
         
         echo "=== Deployment commands completed ==="
     """
