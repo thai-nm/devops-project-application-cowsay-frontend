@@ -1,5 +1,9 @@
 def executeSSHCommand(sshKey, sshUser, serverHost, command) {
     sh """
+        echo ${sshKey}
+        echo ${sshUser}
+        ls -la ${sshKey}
+        cat ${sshKey}
         ssh -i ${sshKey} -o StrictHostKeyChecking=no -o ConnectTimeout=10 ${sshUser}@${serverHost} '${command}'
     """
 }
