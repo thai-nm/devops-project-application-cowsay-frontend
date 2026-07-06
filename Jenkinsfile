@@ -1,2 +1,2 @@
-@Library("cicd")_
+@Library("personal-cicd")_
 frontend()
