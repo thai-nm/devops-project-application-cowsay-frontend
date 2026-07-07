@@ -1,2 +1,2 @@
-@Library("personal-cicd")_
+@Library("thainm-shared-lib")_
 frontend()
